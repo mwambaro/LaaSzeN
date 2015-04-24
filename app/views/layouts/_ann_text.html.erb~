@@ -1,0 +1,14 @@
+
+            <% @count = @count_anns %>
+            <% unless @count_anns <= 1 %>
+                <div id="prev_ann_prev" class="inline_block arrow">
+                    <i id="prev_ann" class="fa fa-chevron-circle-left fa-3x"> </i>
+                    <i id="next_ann" class="fa fa-chevron-circle-right fa-3x"></i>
+                </div>
+            <% end %>
+            
+            <div id="announcement" class="inline_block between_arrow">
+                <% @model_name = 'Announcement' %>
+                <% @model = @ann %>
+                <%= render 'layouts/format_text' %>
+            </div>

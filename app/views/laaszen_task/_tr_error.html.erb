@@ -1,0 +1,6 @@
+
+    <% @notice = 'Failed: ' + @obj_model.get_debug_messages%>
+    <%= render 'notice' %>
+    <div align="center">
+        <%= link_to 'Restart', laaszen_task_restart_path %>
+    </div>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head>
+    <%= render 'layouts/metas' %>
+    <%= render 'layouts/stylesheets' %>
+    <%= render 'layouts/jscripts' %>
+</head>
+    <body class="wide template-single">
+        <div id="wrapper">            
+            <%= render 'layouts/header' %> 
+            <div id="#conten"       
+            <%= yield %>
+            
+            <%= render 'layouts/footer' %>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+
+            
+<!-- CONTENT -->
+
+            <div id="content" class="page_wrapper page_background">
+                <div id="blog_content" class="columns_431">
+                    <div class="three_quarters bottom_padding">
+                        <div id="post-273" class="post_box top">
+                            
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Slides</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Theme</th>
+      <th>Author</th>
+      <th>Topic</th>
+      <th>Content</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @slides.each do |slide| %>
+      <tr>
+        <td><%= slide.language %></td>
+        <td><%= slide.theme %></td>
+        <td><%= slide.topic %></td>
+        <td><%= slide.author %></td>
+        <td><%= slide.content %></td>
+        <td><%= link_to 'Show', slide %></td>
+        <td><%= link_to 'Edit', edit_slide_path(slide) %></td>
+        <td>
+            <%= link_to(
+                    'Destroy', slide, 
+                    method: :delete, 
+                    data: { confirm: 'Are you sure?' }
+                )
+            %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New slide', new_slide_path %>
+
+                        </div>
+                    </div>
+                    
+<!-- QUATER SIDE BAR -->
+
+                    <div class="quarter sidebar">
+                    </div>
+                </div>
+            </div>

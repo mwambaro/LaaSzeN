@@ -1,0 +1,27 @@
+$(document).ready (
+    function () {
+        start_off_drop_down();
+        
+        $('#next').click(
+            
+        );
+        
+        $('#prev').click(
+            function(){
+                load_slide('/world_citizen/prev_slide', 'slides');
+            }
+        );
+        /*
+        $().click(
+            function(){
+            
+            }
+        );
+        
+        $().click(
+            function(){
+            
+            }
+        ); */  
+    }
+);

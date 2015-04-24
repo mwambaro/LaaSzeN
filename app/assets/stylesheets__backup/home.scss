@@ -1,0 +1,110 @@
+
+/* Home box that covers #excerpts and #slides */
+
+#excerpts, #slides {
+    -webkit-box-shadow: 10px 10px 10px black;
+       -moz-box-shadow: 10px 10px 10px black;
+            box-shadow: 10px 10px 10px black;
+}
+
+.block {
+    display: block;
+}
+.inline_block {
+    display: inline-block;
+}
+
+.excerpt, .slide{
+    padding: 3px; 
+    border: 2px solid #31BBC4;
+    -moz-border-radius-vh: 5px;
+    -webkit-border-radius: 5px;
+            border-radius: 5px; 
+}
+
+#slides p, #excerpts p {
+    text-align: left;
+    white-space: pre-wrap;
+}
+
+.slide_header p {
+    text-align: center;
+}
+
+/* columns of same height styles */
+
+.row-full-height {
+  height: 100%;
+}
+.col-full-height {
+  height: 100%;
+  vertical-align: middle;
+}
+.row-same-height {
+  display: table;
+  width: 100%;
+  /* fix overflow */
+  table-layout: fixed;
+}
+.col-xs-height {
+  display: table-cell;
+  float: none !important;
+}
+
+@media (min-width: 768px) {
+  .col-sm-height {
+    display: table-cell;
+    float: none !important;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-height {
+    display: table-cell;
+    float: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .col-lg-height {
+    display: table-cell;
+    float: none !important;
+  }
+}
+
+/* vertical alignment styles */
+
+.col-top {
+  vertical-align: top;
+}
+.col-middle {
+  vertical-align: middle;
+}
+.col-bottom {
+  vertical-align: bottom;
+}
+
+/* INSTRUCTIONS ***
+Restrictions
+
+With column of same height in effect, you can have only one line of columns in the same row, and the line of columns is 100% of the row.
+
+Applying Boostrap push, pulls and offset breaks the layout, they're not supported by this solution.
+IE8 Support
+
+The code works also on IE8 only if you make Bootstrap 3 work on IE8. To make it work you need to use Respond.js and follow the respond.js guidelines:
+
+    Change the Bootstrap 3 Css netdna.bootstrapcdn.com to a local file: Respond.js only works with local Css files unless additional steps are taken.
+    Change the Css from a style element to an external local Css with link rel="stylesheet": Respond.js doesn't parse Css referenced via @import, nor does it work with media queries within style elements.
+    Reference the Respond.js script after all of your Css.
+
+I publish free and open source plugins
+My plugins
+My plugins
+rss
+Rss
+rss
+Google+
+rss
+Twitter
+Copyright © 2013 - 2015 Report a bug
+
+/*****************************************/

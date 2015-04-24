@@ -1,0 +1,11 @@
+
+<table class="excerpts" data-role="content" data-theme="b"> 
+    <tr>
+        <td><p> <STRONG> <%= motto %> </STRONG> </p></td>
+    
+        <td><p> 
+        <STRONG> Announcement </STRONG> <br><br> 
+        <%= progress %> 
+        </p></td>
+    </tr>
+</table>

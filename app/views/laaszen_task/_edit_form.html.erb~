@@ -1,0 +1,28 @@
+
+    <% @edit_payload = @e_payload[:payload] %>   
+    <%= tag("div", {align: 'center'}, true) %>
+        <%= render 'edit_translation' %>
+        <%= form_for :e_payload, url: 'edit' do |f| %>
+            
+            <%= tag("div", {align: 'center'}, true) %>
+                <%= f.label(
+                        "Edit The Translation In The Box Below!", 
+                        style: "font-weight: bold" 
+                    )
+                %>
+            <%= tag("div") %>
+            <%= tag("div", {align: 'center'}, true) %>
+                <%= f.text_area(
+                        :translated, 
+                        value: "#{@edit_payload[:translated]}", 
+                        cols: 50, rows: 10
+                    )
+                %>
+            <%= tag("div") %>
+            
+            <%= tag("div", {align: 'center'}, true) %>
+                <%= f.submit %>
+            <%= tag("div") %>
+            
+        <% end %>
+    <%= tag("div") %>

@@ -1,0 +1,47 @@
+
+
+<div data-role="content" data-theme="a">
+    <div data-role="content" data-theme="a"> 
+        <%= tag(
+                "p", {'data-role' => 'content', 'data-theme' => 'b', 
+                'align' => 'center', 'style' => @style}, true
+            ) 
+        %>
+            
+        <!-- # Splitting text book at line breaks -->
+        <% @text = @text_content.split("\n") %> 
+            
+        <!-- #Detection variables -->
+        <% @toc = false %>
+        <% @p_header = false %> 
+            
+        <% @text.each do |p| %>
+                
+            <!-- #titles, chapters, ... only outside table of content -->
+            <% if !@toc %>
+                <!-- # Detect titles, chapters, ... -->
+                <% if p =~ /^\s*#\s*/i %> 
+                    <%= tag(
+                            "p", {'data-role' => 'content', 
+                            'data-theme' => 'b', 'align' => 'center'}, true
+                        ) 
+                    %>
+                    <% @p_header = true %>
+                <% end %>
+                <!-- # Line break needed because each 'p' here is a line -->
+                <%= p %>
+                <%= tag("br", nil, true) %>
+            <% end %>
+                
+            <!-- # Close paragraph started by title, chapter detection -->
+            <% if @p_header %> 
+                <%= tag("p") %>
+                <% @p_header = false %>
+            <% end %>
+            <!-- -->
+                
+        <% end %>
+        <%= tag("p") %>
+    </div>
+    <% @style = '' %>
+</div>

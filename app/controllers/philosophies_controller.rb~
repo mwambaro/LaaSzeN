@@ -1,0 +1,20 @@
+class PhilosophiesController < ApplicationController
+  def new
+  end
+
+  def show
+      @title = "Philosophy"
+      @philosophies = Philosophy.all
+  end
+
+  def create
+  end
+  
+  def import_book
+      if convert_book
+          render :show
+      else
+          render :new
+      end
+  end
+end

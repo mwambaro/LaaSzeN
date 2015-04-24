@@ -1,0 +1,12 @@
+
+    
+    <div align="center">
+        <table>
+            <tr><td style="font-weight: bold"> 
+                Translation Language: <%= "#{@into_language}" %> 
+            </td></tr>
+            <tr><td style="font-weight: bold"> Data To Translate: </td></tr>
+        </table>
+        <% @text_content = @tr_payload.to_translate %>
+        <%= render 'layouts/line_breaks' %> 
+    </div>

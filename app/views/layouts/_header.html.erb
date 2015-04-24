@@ -1,0 +1,36 @@
+    
+    
+    <% @logos = [] %>
+    <% @nav_bar = [] %>
+    <% @banner = "\<%= image_tag '300-banner.jpg' %\>" %>
+    
+    <% @main_title = '<p> Leadership As A Service </p>' %>
+    <% @main_title += '<p> World Citizenship Nation </p>' %>
+    <% @main_title += '<p> (LaaSzeN) </p>' %>
+    
+    <% @intro = 'This Is LaaSzeN' %>
+    <% @intro = IntroText.last.content.to_s unless IntroText.last.nil?  %>
+    
+    <% uri = params[:controller]+'#'+params[:action] %>
+    
+    <% unless (uri =~ /^world_citizen/i) %>       
+        <% @nav_bar << "\<%= link_to 'Home', root_path %\>" %>
+    <% end %>
+    
+    <% @nav_bar << "\<%= link_to 'Philosophy', '#' %\>" %>
+    <% @nav_bar << "\<%= link_to 'LaaS', '#' %\>" %>
+    <% @nav_bar << "\<%= link_to 'YearBooks', '#' %\>" %>
+    <% @nav_bar << "\<%= link_to 'Sign In', '#' %\>" %>
+    
+    <% @file = File.join(
+        ::Rails.root, 'app', 'views', 'layouts', '_dav_header.html.erb'
+    ) %>
+    <% @hash_hh = dav_gen_hash_header(
+           @main_title, @nav_bar, @intro, @logos, @banner
+    ) %>
+    <% DavidEgan.new.gen_dav_egan(
+            @hash_hh, @file, 
+            {bl_header: true, bl_content: false, bl_footer: false}                  
+    ) %>
+    <%= render 'layouts/dav_header' %>
+ 

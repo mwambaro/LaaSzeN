@@ -1,0 +1,89 @@
+
+$(document).ready (
+    function () {
+        DropDownMenu (
+             'lang_dt1', 'lang_dd1', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        ); 
+        
+        DropDownMenu (
+             'header_dt1', 'header_dd1', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'header_dt2', 'header_dd2', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'header_dt3', 'header_dd3', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'header_dt4', 'header_dd4', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'header_dt5', 'header_dd5', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'header_dt6', 'header_dd6', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'header_dt7', 'header_dd7', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'footer_dt1', 'footer_dd1', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'footer_dt2', 'footer_dd2', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'footer_dt3', 'footer_dd3', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );
+        
+        DropDownMenu (
+             'footer_dt4', 'footer_dd4', 
+             function (data) {
+                 var lan = data.html ();
+             }
+        );  
+    }
+);
+     

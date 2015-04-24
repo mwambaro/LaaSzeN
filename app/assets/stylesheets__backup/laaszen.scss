@@ -1,0 +1,21 @@
+
+body {
+    margin: 0 auto; 
+    max-width: 95%;
+}
+
+* {
+    padding: 0; margin: 0;
+}
+
+#logo {
+    background: #31BBC4;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px black;
+    /**************************/
+    -moz-border-radius-vh: 5px;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+            /*******************/
+}

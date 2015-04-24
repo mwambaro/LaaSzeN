@@ -1,0 +1,59 @@
+
+            
+<!-- CONTENT -->
+
+            <div id="content" class="page_wrapper page_background">
+                <div id="blog_content" class="columns_431">
+                    <div class="three_quarters bottom_padding">
+                        <div id="post-273" class="post_box top">
+                            
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Books</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Theme</th>
+      <th>Author</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.language %></td>
+        <td><%= book.theme %></td>
+        <td><%= book.author %></td>
+        <td><%= book.content %></td>
+        <td><%= link_to 'Show', book %></td>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td>
+            <%= link_to(
+                    'Destroy', book, 
+                    method: :delete, 
+                    data: { confirm: 'Are you sure?' }
+                )
+            %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Book', new_book_path %>
+
+                        </div>
+                    </div>
+                    
+<!-- QUATER SIDE BAR -->
+
+                    <div class="quarter sidebar">
+                    </div>
+                </div>
+            </div>

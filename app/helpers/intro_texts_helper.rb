@@ -1,0 +1,2 @@
+module IntroTextsHelper
+end

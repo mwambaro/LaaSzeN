@@ -1,0 +1,15 @@
+
+
+    <%= tag("dl", {class: 'dropdown'}, true) %>
+        <%= tag("dt", {id: 'lang_dt1', class: 'ddheader'}, true) %>
+            <%= sentence('English') %>
+        <%= tag("dt") %>
+        <%= tag("dd", {id: 'lang_dd1', class: 'ddcontent'}, true) %>
+            <%= tag("ul", nil, true) %>
+                <%= tag("li", nil, true) %>
+                    <%= sentence('English') %>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <div style="clear:both" />

@@ -1,0 +1,47 @@
+
+            
+<!-- CONTENT -->
+
+            <div id="content" class="page_wrapper page_background">
+                <div id="blog_content" class="columns_431">
+                    <div class="three_quarters bottom_padding">
+                        <div id="post-273" class="post_box top">
+                            <p id="notice"><%= notice %></p>
+
+<h1>Listing Intro Texts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @intro_texts.each do |intro_text| %>
+      <tr>
+        <td><%= intro_text.language %></td>
+        <td><%= intro_text.content %></td>
+        <td><%= link_to 'Show', intro_text %></td>
+        <td><%= link_to 'Edit', edit_intro_text_path(intro_text) %></td>
+        <td><%= link_to 'Destroy', intro_text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Intro text', new_intro_text_path %>
+
+                        </div>
+                    </div>
+                    
+<!-- QUATER SIDE BAR -->
+
+                    <div class="quarter sidebar">
+                    </div>
+                </div>
+            </div>

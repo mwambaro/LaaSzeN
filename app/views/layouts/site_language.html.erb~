@@ -1,0 +1,17 @@
+
+    <% hash, options, active = [nil, nil, 'English'] %>
+    <% begin %>
+        <% hash, options, active = site_language_drop_down %>
+        <% path = File.join(File.dirname(__FILE__), '_active_language.html.erb') %>
+        <% partial = define_html_drop_down_class(hash, path, options) %>
+        <%= render "layouts/#{partial}" %>
+    <% rescue => err %>
+        <%= tag("dl", {class: 'dropdown'}, true) %>
+            <%= tag("dt", {id: 'dt1', class: 'ddheader'}, true) %>
+                <%= active %>
+            </dt>
+            <%= tag("dd", {id: 'dd1', class: 'ddcontent'}, true) %>
+                <%= active %>
+            </dd>
+        </dl>
+    <% end %>

@@ -1,0 +1,19 @@
+   
+    <%= tag("div", {align: 'center'}, true) %>
+        <%= form_for :payload, url: 'translate' do |f| %>
+            
+            <%= tag("div", {align: 'center'}, true) %>
+                <%= f.label :Language, style: 'font-weight: bold' %>
+            <%= tag("div") %>
+            <%= tag("div", {align: 'center'}, true) %>
+                <%= f.text_field(
+                        :into_language, value: 'Into which language?'
+                    ) 
+                %>
+            <%= tag("div") %>
+            
+            <%= tag("div", {align: 'center'}, true) %>
+                <%= f.submit %>
+            <%= tag("div") %>
+        <% end %>
+    <%= tag("div") %>

@@ -1,0 +1,87 @@
+
+
+<% count = @texts.count %>
+<% if count == 0 %>
+    <%= tag(
+            "div", 
+            {'data-role' => 'header', 
+             'data-theme' => 'b', 'align' => 'center'}, 
+            true
+        )
+    %>
+        <%= tag("p", nil, true) %>
+            <%= "Sorry, there are no #{@texts.class.to_s.pluralize} in store for the moment!" %>
+        <%= tag("p") %>
+    <%= tag("div") %>
+<% else %>
+
+    <!-- accordion support if there are many books to view -->
+    <% if count > 1 %>
+        <%= tag("div", {'data-role' => 'collapsible-set'}, true) %>
+    <% end %>
+
+    <% @texts.each do |book| %>
+        <div data-role="collapsible" data-theme="b">
+            <h1>
+                <p class="book-header"> <%= book.theme %> </p>
+                <p class="book-header"> <%= book.language + ' Version (Full View)' %> </p>
+                <p class="book-header"> &copy;2015 &nbsp;<%= book.author %> </p>
+            </h1>
+            <p> 
+                <!-- # Splitting text book at line breaks -->
+                <% @text = book.content.to_s.split("\n") %> 
+            
+                <!-- #Detection variables -->
+                <% @toc = false %>
+                <% @p_header = false %>
+                <% @data = nil %> 
+            
+                <% @text.each do |p| %>
+                    <!-- # Detect start of table of content and mark it -->
+                    <% if p =~ /^\s*<toc>\s*/i %>
+                        <% @toc = true %>
+                    <% end %> 
+                    <!-- -->
+                
+                    <!-- #titles, chapters, ... only outside table of content -->
+                    <% if !@toc %>
+                        <!-- # Detect titles, chapters, ... -->
+                        <% if p =~ /\A\s*#\s*[\W\d]*(.*)\z/i %> 
+                            <%= tag(
+                                    "p", {'data-role' => 'content', 
+                                    'data-theme' => 'b', 'class' => 'book-title-w'}, true
+                                ) 
+                            %>
+                            <% @p_header = true %>
+                            <% @data = $1.chomp %>
+                        <% else %>
+                            <% @data = p.chomp %>
+                        <% end %>
+                        <!-- # Line break needed because each 'p' here is a line -->
+                        <%= @data %>
+                        <%= tag("br", nil, true) %>
+                    <% end %>
+                
+                    <!-- # Close paragraph started by title, chapter detection -->
+                    <% if @p_header %> 
+                        <%= tag("p") %>
+                        <% @p_header = false %>
+                    <% end %>
+                    <!-- -->
+                
+                    <!-- #Detect end of table of content and mark it -->
+                    <% if p =~ /\A\s*<\/toc>\s*\z/i %>
+                        <% @toc = false %>
+                    <% end %>
+                    <!-- -->
+                <% end %>
+            </p>
+        </div>
+    <% end %>
+    
+    <!-- end of books accordion support -->
+    <% if count > 1 %>
+        <%= tag("div") %>
+    <% end %>
+
+<% end %>

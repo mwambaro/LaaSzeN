@@ -1,0 +1,48 @@
+
+    <% hash = {
+        'sentence("Philosophy")' => 
+            ["link_to(sentence('Books'), shelf_path, {class: 'separator'}) "],
+        'sentence("LaaS") ' => 
+            [
+                "link_to(sentence('Recommendations'), shelf_path, {class: 'separator'}) ",
+                "link_to(sentence('Institutions'), shelf_path, {class: 'separator'}) ",
+                "link_to(sentence('Professions'), shelf_path, {class: 'separator'}) "
+            ],
+        'sentence("Education") ' => 
+            [
+                "link_to(sentence('Recommending Education'), shelf_path, {class: 'separator'}) ",
+                "link_to(sentence('Warning About The Fake'), shelf_path, {class: 'separator'}) "
+            ],
+        'sentence("Entertainment") ' => 
+            [
+                "link_to(sentence('Entertainment As a Service'), shelf_path, {class: 'separator'}) ",
+                "link_to(sentence('Warning Unhealthy Leisure'), shelf_path, {class: 'separator'}) "
+            ],
+        'sentence("Health") ' => 
+            [
+                "link_to(sentence('Health Services and Suggestions'), shelf_path, {class: 'separator'}) ",
+                "link_to(sentence('Warning About Unhealthy Behavior'), shelf_path, {class: 'separator'}) "
+            ],
+        'sentence("Announcements") ' => 
+            [
+                "link_to(sentence('LaaSzeN Progress'), shelf_path, {class: 'separator'}) ",
+                "link_to(sentence('LaaSzeN Services Market'), shelf_path, {class: 'separator'}) ",
+                "link_to(sentence('LaaSzeN Emergencies'), shelf_path, {class: 'separator'}) "
+            ],
+        'sentence("YearBooks") ' => 
+            [
+                "link_to(sentence('LaaSzeN 2015 YearBook'), shelf_path, {class: 'separator'}) "
+            ]
+    } %>
+    
+    <% begin %>
+        <% path = File.join(File.dirname(__FILE__), '_header_drop.html.erb') %>
+        <% partial = 'header_drop' %>
+        <% if true %>
+            <% partial = define_html_drop_down_class(hash, 11, path) %>
+        <% end %>
+        <%= render "layouts/#{partial}" %>
+    <% rescue => err %>
+        <p style="color: red"> <%= err.message %> </p>
+        <% debug_write("#{__FILE__}: #{err.message}") %>
+    <% end %>

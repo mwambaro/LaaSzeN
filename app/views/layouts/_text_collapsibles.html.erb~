@@ -1,0 +1,38 @@
+
+<% if @books.count == 0 %>
+    <%= tag(
+            "div", 
+            {'data-role' => 'header', 
+             'data-theme' => 'b', 'align' => 'center'}, 
+            true
+        )
+    %>
+        <%= tag("p", nil, true) %>
+            <%= 'Sorry, there are no books in store for the moment!' %>
+        <%= tag("p") %>
+    <%= tag("div") %>
+<% else %>
+<% @books.each do |book| %>
+    <%= render 'layouts/header_navigation' %>
+    <div data-role="content" data-theme="a">
+        <div data-role="header" data-theme="b">
+            <p> Language :<%= book.language %> </p>
+            <p> Theme    :<%= book.theme %> </p>
+            <p> Author   :<%= book.author %> </p>
+        </div>
+        <% hashes = book_collapse(book) %>
+        <% if !hashes.nil? %>
+            <% hashes.each do |hash| %>                
+                <div data-role="collapsible" data-theme="b"> 
+                    <h2> <%= hash[:header] %> </h2>
+                    <p> 
+                        <% @text_content = hash[:content] %>
+                        <%= render 'layouts/line_breaks' %> 
+                    </p>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    <% break %>
+<% end %>
+<% end %>

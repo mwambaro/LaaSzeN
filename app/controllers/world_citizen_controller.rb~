@@ -1,0 +1,327 @@
+class WorldCitizenController < ApplicationController
+  before_action :count, only: [:home, :next_slide, :prev_slide, :prev_motto, 
+                               :next_motto, :prev_ann, :next_ann]
+  
+  def home
+    @gen_title = "We The Living"
+    @title = "Home"
+    
+    @slide = get_cur_model(@slide_klass)
+    @motto = get_cur_model(@motto_klass)
+    @ann = get_cur_model(@ann_klass)
+  end
+  
+  def next_slide
+      @slide = get_next_model(@slide_klass)
+  end
+  
+  def prev_slide
+      @slide = get_prev_model(@slide_klass)        
+  end
+  
+  def next_motto     
+      @motto = get_next_model(@motto_klass)    
+  end
+  
+  def prev_motto
+      @motto = get_prev_model(@motto_klass)
+  end
+  
+  def next_ann  
+      @ann = get_next_model(@ann_klass)
+  end
+  
+  def prev_ann
+      @ann = get_prev_model(@ann_klass)
+  end
+  
+  private
+  
+  def count
+      @cache_store = Worldcitizen::Application.config
+                         .action_controller.cache_store
+      @count_mottos = 0
+      @count_anns = 0
+      @count_slides = 0
+      @model = nil
+      
+      @model_name = 'Model'
+      
+      @slide_klass = nil
+      begin
+          @slide_klass = Object.const_get('Slide')
+          @count_slides = @slide_klass.count
+      rescue => err
+          handle_error('count <=> Slide', err)
+      end
+      
+      @ann_klass = nil
+      begin
+          @ann_klass = Object.const_get('Announcement')
+          @count_anns = @ann_klass.count
+      rescue => err
+          handle_error('count <=> Announcement', err)
+      end
+      
+      @motto_klass = nil
+      begin
+          @motto_klass = Object.const_get('Motto')
+          @count_mottos = @motto_klass.count
+      rescue => err
+          handle_error('count <=> Motto', err)
+      end
+  end
+  
+  def get_index(klass)
+      if klass.nil?
+          LaaszenModel::DataModel.new(::Rails.root)
+              .error_message(
+                  "Exception in #{self.class.to_s}::get_index(): " +
+                  "assertion klass != nil failed!"
+              )
+          return nil
+      end
+      
+      @index = nil
+      
+      begin
+          if !cookies[:citizen_id].nil?
+              m = cookies[:citizen_id].match(/(\d+)::#{klass.to_s}/i)
+              if m.nil?
+                  @index = set_index(klass)
+              else
+                  @index = m[1].to_s.to_i
+              end
+          else
+              @index = set_index(klass)
+          end
+      rescue => err
+          handle_error('get_index', err)
+      end
+      @index
+  end
+  
+  def set_index(klass, id=nil)
+      return nil if klass.nil?
+      
+      begin
+          if id.nil?
+              # get id of latest model
+              if klass.count > 0
+                  re = get_latest_id(klass)
+                  unless re.nil?
+                      id = re[0]
+                  end
+              end
+          end
+      
+          unless id.nil?
+              LaaszenModel::DataModel.new(::Rails.root)
+                  .send(:debug_write, "Calculated #{klass.to_s} index: #{id}")
+              
+              if cookies[:citizen_id].nil?
+                  cookies[:citizen_id] = {
+                      :value => "#{id}::#{klass.to_s}", 
+                      :expires => 24.hours.from_now
+                  }
+              else
+                  m = cookies[:citizen_id].match(/::#{klass.to_s}/i)
+                  if m.nil?
+                      cookies[:citizen_id] = {
+                          :value => "#{id}::#{klass.to_s}#" + 
+                                    "#{cookies[:citizen_id]}", 
+                          :expires => 24.hours.from_now
+                      }
+                  else # insert id within cookie at its right place
+                      cks = cookies[:citizen_id].split('#')  
+                      len = cks.length
+                      0.upto(len-1) do |ii|
+                          if cks[ii].match(/\A(\d+)::(#{klass.to_s})\z/i)
+                              cks[ii] = "#{id}::#{klass.to_s}"
+                              break
+                          end
+                      end 
+                      ck = ""
+                      cks.each do |c|
+                          ck += "#{c}#"
+                      end
+                      ck = ck.slice(0...ck.length-1) # chop last '#' char
+                      cookies[:citizen_id] = {
+                          :value => ck, 
+                          :expires => 24.hours.from_now
+                      }    
+                  end
+              end
+          end
+      rescue => err
+          handle_error('set_index', err)
+      end
+      
+      LaaszenModel::DataModel.new(::Rails.root)
+                  .send(:debug_write, "Cookies: " + cookies[:citizen_id])
+      
+      return id
+  end
+  
+  def get_latest_id(klass)
+      return nil if klass.nil?
+      id = nil
+      ids = nil
+      
+      begin
+          if klass.count > 0
+              ids = nil
+              klass.all.each do |row|
+                  ids ||= []
+                  ids << row.id
+              end
+          
+              unless ids.nil?
+                  ids.sort!
+                  id = ids.last
+                  unless id == klass.last.id
+                      LaaszenModel::DataModel.new(::Rails.root)
+                      .error_message(
+                          "Exception in #{self.class.to_s}::get_latest_id(): " +
+                          "assertion id == klass.last.id failed!"
+                      )
+                  end
+              end
+          end
+      rescue => err
+          handle_error('get_latest_id', err)
+      end
+      
+      return id, ids
+  end
+  
+  def get_id(current_id, klass, bl_previous=true)
+      return current_id if klass.nil?
+      if current_id.nil?
+          LaaszenModel::DataModel.new(::Rails.root)
+              .error_message(
+                  "Exception in #{self.class.to_s}::get_id(): " +
+                  "assertion current_id != nil failed!"
+              )
+          return nil
+      end
+      
+      re = get_latest_id(klass)
+      if re.nil?
+          LaaszenModel::DataModel.new(::Rails.root)
+              .error_message(
+                  "Exception in #{self.class.to_s}::get_latest_id(): " +
+                  " failed!"
+              )
+          return current_id
+      end
+ 
+      id, ids = re
+      
+      index = ids.find_index(current_id)
+      if index.nil?
+          LaaszenModel::DataModel.new(::Rails.root)
+              .error_message(
+                  "Exception in #{self.class.to_s}::ids.find_index(): " +
+                  " could not find #{current_id} in #{ids}!"
+              )
+          return current_id
+      end
+      
+      if bl_previous
+          index = index-1 < 0 ? klass.count-1 : index-1
+      else
+          index = index+1 >= klass.count ? 0 : index+1
+      end
+      
+      id = nil
+      begin
+          id = ids[index]
+      rescue => err
+          handle_error('get_id', err)
+          return current_id
+      end
+      
+      return id
+  end
+  
+  def get_cur_model(klass)
+      begin
+      if klass.nil?
+          LaaszenModel::DataModel.new(::Rails.root)
+              .error_message(
+                  "Exception in #{self.class.to_s}::get_cur_model(): " +
+                  "assertion klass != nil failed!"
+              )
+      end
+      
+      model = nil
+      index = get_index(klass)
+      if index.nil?
+          LaaszenModel::DataModel.new(::Rails.root)
+              .error_message(
+                  "Exception in #{self.class.to_s}::get_cur_model:"+
+                  "get_index(): assertion index != nil failed!"
+              )  
+          return nil  
+      end
+      
+      model = klass.find(index)
+      if model.nil?
+          LaaszenModel::DataModel.new(::Rails.root)
+              .error_message(
+                  "Exception in #{self.class.to_s}::get_cur_model:"+
+                  "find(#{index}): assertion model != nil failed!"
+              )
+          return nil
+      end
+      set_index(klass, index)
+      rescue => err
+      
+      end
+      
+      return model
+  end
+  
+  def get_prev_model(klass)
+      return nil if klass.nil?
+      
+      model = nil
+      index = get_index(klass)
+      unless index.nil?
+          index = get_id(index, klass)
+          unless index.nil?
+              model = klass.find(index)
+              set_index(klass, index)
+          end
+      end
+      return model
+  end
+  
+  def get_next_model(klass)
+      return nil if klass.nil?
+      
+      model = nil
+      index = get_index(klass)
+      unless index.nil?
+          index = get_id(index, klass, false)
+          unless index.nil?
+              model = klass.find(index)
+              set_index(klass, index)
+          end
+      end
+      return model
+  end
+  
+  def handle_error(method, err_obj, bl_log=true)
+      @laas = LaaszenModel::DataModel.new(::Rails.root)
+      return nil unless @laas.send(:valid_string?, method)
+      return nil if err_obj.nil?
+      return nil unless err_obj.respond_to?(:message)
+            
+      message = "#{self.class.to_s}::#{method}():" +
+                " #{err_obj.message}"
+      @laas.send(:debug_write, "#{message}", bl_log)
+      return nil
+  end
+end

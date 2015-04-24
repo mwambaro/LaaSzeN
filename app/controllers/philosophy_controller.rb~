@@ -1,0 +1,6 @@
+class PhilosophyController < ApplicationController
+  def new
+      @title = 'AddPhilo'
+      @philosophy = Philosophy.new
+  end
+end

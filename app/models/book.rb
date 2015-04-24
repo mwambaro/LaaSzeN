@@ -1,0 +1,37 @@
+
+class Book < ActiveRecord::Base 
+    # mass assignment protection
+    attr_accessor :language, :theme, :author, :content
+    # Associations macro-style method invocations
+    # Validations
+    # Callbacks
+    # Accessors overloading
+    def language=(value)
+        self[:language] = value
+    end
+    def language
+        self[:language]
+    end
+    def theme=(value)
+        self[:theme] = value
+    end
+    def theme
+        self[:theme]
+    end
+    def author=(value)
+        self[:author] = value
+    end
+    def author
+        self[:author]
+    end
+    def content=(value)
+        self[:content] = value
+    end
+    def content
+        self[:content]
+    end
+    # Other definitions
+    def upload_book=(data)
+        self[:content] = data.read    
+    end
+end

@@ -1,0 +1,24 @@
+
+
+#rotator {
+    display: box;
+    display: -moz-box;
+    display: -ms-box;
+    display: -webkit-box;
+}
+    #rotator li{
+        -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
+                box-flex: 1;
+        -webkit-box-orient: horizontal;
+           -moz-box-orient: horizontal;
+            -ms-box-orient: horizontal;
+                box-orient: horizontal;
+    }
+    
+#rotator li {
+    text-align: left;
+    height: 30%;
+    width: 60%;
+}

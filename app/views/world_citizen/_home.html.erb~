@@ -1,0 +1,17 @@
+
+    <% @left_columns_divs = [] %>
+    <% @left_columns_divs << "\<%= render 'layouts/motto_text' %\>" %>
+    <% @left_columns_divs << "\<%= render 'layouts/slide_text' %\>" %>
+    
+    <% @right_columns_divs = [] %>
+    <% @right_columns_divs << "\<%= render 'layouts/ann_text' %\>" %>
+    
+    <% @file = File.join(
+        ::Rails.root, 'app', 'views', 'layouts', '_dav_content.html.erb'
+    ) %>
+    <% @hash_cc = dav_gen_hash_content(@left_columns_divs, @right_columns_divs) %>
+    <% DavidEgan.new.gen_dav_egan(
+           @hash_cc, @file, 
+           {bl_header: false, bl_content: true, bl_footer: false}                  
+    ) %>
+    <%= render 'layouts/dav_content' %>

@@ -1,0 +1,6 @@
+
+<%= stylesheet_link_tag 'application', :media => 'screen' %>
+<%= stylesheet_link_tag 'david_egan/dav_css', :media => 'screen, projection' %>
+<%= stylesheet_link_tag 'david_egan/dav_ga_css' %>
+<%= stylesheet_link_tag 'david_egan/dav_font_awesome' %>
+

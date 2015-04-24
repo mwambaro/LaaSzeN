@@ -1,0 +1,114 @@
+
+
+    <%= tag("dl", {class: 'dropdown'}, true) %>
+        <%= tag("dt", {id: 'header_dt1', class: 'ddheader'}, true) %>
+            <%= sentence("Philosophy") %>
+        <%= tag("dt") %>
+        <%= tag("dd", {id: 'header_dd1', class: 'ddcontent'}, true) %>
+            <%= tag("ul", nil, true) %>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Books'), {class: 'separator'}, shelf_path)  %>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <div style="clear:both" />
+    <%= tag("dl", {class: 'dropdown'}, true) %>
+        <%= tag("dt", {id: 'header_dt2', class: 'ddheader'}, true) %>
+            <%=  sentence("LaaS")  %>
+        <%= tag("dt") %>
+        <%= tag("dd", {id: 'header_dd2', class: 'ddcontent'}, true) %>
+            <%= tag("ul", nil, true) %>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Recommendations'), {class: 'separator'}, shelf_path)  %>
+                </li>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Institutions'), {class: 'separator'}, shelf_path)  %>
+                </li>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Professions'), {class: 'separator'}, shelf_path)  %>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <div style="clear:both" />
+    <%= tag("dl", {class: 'dropdown'}, true) %>
+        <%= tag("dt", {id: 'header_dt3', class: 'ddheader'}, true) %>
+            <%=  sentence("Education")  %>
+        <%= tag("dt") %>
+        <%= tag("dd", {id: 'header_dd3', class: 'ddcontent'}, true) %>
+            <%= tag("ul", nil, true) %>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Recommending Education'), {class: 'separator'}, shelf_path)  %>
+                </li>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Warning About The Fake'), {class: 'separator'}, shelf_path)  %>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <div style="clear:both" />
+    <%= tag("dl", {class: 'dropdown'}, true) %>
+        <%= tag("dt", {id: 'header_dt4', class: 'ddheader'}, true) %>
+            <%=  sentence("Entertainment")  %>
+        <%= tag("dt") %>
+        <%= tag("dd", {id: 'header_dd4', class: 'ddcontent'}, true) %>
+            <%= tag("ul", nil, true) %>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Entertainment As a Service'), {class: 'separator'}, shelf_path)  %>
+                </li>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Warning Unhealthy Leisure'), {class: 'separator'}, shelf_path)  %>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <div style="clear:both" />
+    <%= tag("dl", {class: 'dropdown'}, true) %>
+        <%= tag("dt", {id: 'header_dt5', class: 'ddheader'}, true) %>
+            <%=  sentence("Health")  %>
+        <%= tag("dt") %>
+        <%= tag("dd", {id: 'header_dd5', class: 'ddcontent'}, true) %>
+            <%= tag("ul", nil, true) %>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Health Services and Suggestions'), {class: 'separator'}, shelf_path)  %>
+                </li>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('Warning About Unhealthy Behavior'), {class: 'separator'}, shelf_path)  %>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <div style="clear:both" />
+    <%= tag("dl", {class: 'dropdown'}, true) %>
+        <%= tag("dt", {id: 'header_dt6', class: 'ddheader'}, true) %>
+            <%=  sentence("Announcements")  %>
+        <%= tag("dt") %>
+        <%= tag("dd", {id: 'header_dd6', class: 'ddcontent'}, true) %>
+            <%= tag("ul", nil, true) %>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('LaaSzeN Progress'), {class: 'separator'}, shelf_path)  %>
+                </li>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('LaaSzeN Services Market'), {class: 'separator'}, shelf_path)  %>
+                </li>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('LaaSzeN Emergencies'), {class: 'separator'}, shelf_path)  %>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <div style="clear:both" />
+    <%= tag("dl", {class: 'dropdown'}, true) %>
+        <%= tag("dt", {id: 'header_dt7', class: 'ddheader'}, true) %>
+            <%=  sentence("YearBooks")  %>
+        <%= tag("dt") %>
+        <%= tag("dd", {id: 'header_dd7', class: 'ddcontent'}, true) %>
+            <%= tag("ul", nil, true) %>
+                <%= tag("li", nil, true) %>
+                    <%=  link_to(sentence('LaaSzeN 2015 YearBook'), {class: 'separator'}, shelf_path)  %>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <div style="clear:both" />
