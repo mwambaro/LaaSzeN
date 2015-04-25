@@ -1,7 +1,7 @@
 
 class Slide < ActiveRecord::Base 
     # mass assignment protection
-    attr_accessor :language, :author, :topic, :content
+    attr_accessor :language, :author, :theme, :topic, :content
     # Associations macro-style method invocations
     # Validations
     # Callbacks
@@ -18,6 +18,12 @@ class Slide < ActiveRecord::Base
     def author
         self[:author]
     end
+    def theme=(value)
+        self[:theme] = value
+    end
+    def theme
+        self[:theme]
+    end
     def topic=(value)
         self[:topic] = value
     end
@@ -32,6 +38,6 @@ class Slide < ActiveRecord::Base
     end
     # Other definitions
     def upload_slide=(data)
-        self[:content] = data.read    
+        self[:content] = data.read
     end
 end

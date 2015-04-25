@@ -1,2 +1,35 @@
+<p id="notice"><%= notice %></p>
 
-    <%= render 'davstd_index' %>
+<h1>Listing Slides</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Author</th>
+      <th>Theme</th>
+      <th>Topic</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @slides.each do |slide| %>
+      <tr>
+        <td><%= slide.language %></td>
+        <td><%= slide.author %></td>
+        <td><%= slide.theme %></td>
+        <td><%= slide.topic %></td>
+        <td><%= slide.content %></td>
+        <td><%= link_to 'Show', slide %></td>
+        <td><%= link_to 'Edit', edit_slide_path(slide) %></td>
+        <td><%= link_to 'Destroy', slide, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Slide', new_slide_path %>

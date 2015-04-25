@@ -1,7 +1,7 @@
 
 class Book < ActiveRecord::Base 
     # mass assignment protection
-    attr_accessor :language, :theme, :author, :content
+    attr_accessor :language, :author, :theme, :content
     # Associations macro-style method invocations
     # Validations
     # Callbacks
@@ -12,17 +12,17 @@ class Book < ActiveRecord::Base
     def language
         self[:language]
     end
-    def theme=(value)
-        self[:theme] = value
-    end
-    def theme
-        self[:theme]
-    end
     def author=(value)
         self[:author] = value
     end
     def author
         self[:author]
+    end
+    def theme=(value)
+        self[:theme] = value
+    end
+    def theme
+        self[:theme]
     end
     def content=(value)
         self[:content] = value

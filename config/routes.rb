@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   resources :announcements
 
-  resources :slides
-
   resources :books
+
+  resources :slides
   
   get 'world_citizen/prev_slide'
   get 'world_citizen/prev_ann'

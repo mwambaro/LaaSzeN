@@ -5,44 +5,44 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /books/1
   # GET /books/1.json
   def show
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
   
   def book_shelf
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
   
   def book_whole
     @books = Book.all
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
   
   def book_collapse
     @books = Book.all
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /books/new
   def new
     @book = Book.new
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /books/1/edit
   def edit
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 

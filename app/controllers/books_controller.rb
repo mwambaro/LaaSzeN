@@ -5,45 +5,20 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
-    @view_path = get_view_path(params)
-    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /books/1
   # GET /books/1.json
   def show
-    @view_path = get_view_path(params)
-    DavidEgan.new.make_dav_layout_compatible(@view_path)
-  end
-  
-  def book_shelf
-    @view_path = get_view_path(params)
-    DavidEgan.new.make_dav_layout_compatible(@view_path)
-  end
-  
-  def book_whole
-    @books = Book.all
-    @view_path = get_view_path(params)
-    DavidEgan.new.make_dav_layout_compatible(@view_path)
-  end
-  
-  def book_collapse
-    @books = Book.all
-    @view_path = get_view_path(params)
-    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /books/new
   def new
     @book = Book.new
-    @view_path = get_view_path(params)
-    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /books/1/edit
   def edit
-    @view_path = get_view_path(params)
-    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # POST /books
@@ -94,11 +69,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:language, :theme, :author, :upload_book)
-    end
-    
-    def get_view_path(params)
-        return nil if params.nil?
-        DavidEgan.new.get_view_path(params)
+      params.require(:book).permit(:language, :author, :theme, :content)
     end
 end

@@ -21,10 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :content %><br>
-    <% if @motto.content %>
-        <%= f.text_area :content, value: @motto.content.to_s, col: 80, row: 'auto', readonly: true %>
-    <% end %>
-    <%= f.file_field :upload_motto %>
+    <%= f.text_field :content %>
   </div>
   <div class="actions">
     <%= f.submit %>

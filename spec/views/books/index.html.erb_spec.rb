@@ -5,14 +5,14 @@ RSpec.describe "books/index", :type => :view do
     assign(:books, [
       Book.create!(
         :language => "Language",
-        :theme => "Theme",
         :author => "Author",
+        :theme => "Theme",
         :content => ""
       ),
       Book.create!(
         :language => "Language",
-        :theme => "Theme",
         :author => "Author",
+        :theme => "Theme",
         :content => ""
       )
     ])
@@ -21,8 +21,8 @@ RSpec.describe "books/index", :type => :view do
   it "renders a list of books" do
     render
     assert_select "tr>td", :text => "Language".to_s, :count => 2
-    assert_select "tr>td", :text => "Theme".to_s, :count => 2
     assert_select "tr>td", :text => "Author".to_s, :count => 2
+    assert_select "tr>td", :text => "Theme".to_s, :count => 2
     assert_select "tr>td", :text => "".to_s, :count => 2
   end
 end

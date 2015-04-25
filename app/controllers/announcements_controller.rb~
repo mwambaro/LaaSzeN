@@ -5,27 +5,27 @@ class AnnouncementsController < ApplicationController
   # GET /announcements.json
   def index
     @announcements = Announcement.all
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /announcements/1
   # GET /announcements/1.json
   def show
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /announcements/new
   def new
     @announcement = Announcement.new
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /announcements/1/edit
   def edit
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
@@ -77,7 +77,7 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:language, :name, :upload_announcement)
+      params.require(:announcement).permit(:language, :name, :content)
     end
     
     def get_view_path(params)
