@@ -80,8 +80,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: worldcitizen_production
-  username: worldcitizen
-  password: <%= ENV['WORLDCITIZEN_DATABASE_PASSWORD'] %>
+#production:
+#  <<: *default
+#  database: worldcitizen_production
+#  username: worldcitizen
+#  password: <%= ENV['WORLDCITIZEN_DATABASE_PASSWORD'] %>

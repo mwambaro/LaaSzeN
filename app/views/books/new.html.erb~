@@ -1,0 +1,24 @@
+
+<div data-role="content" data-theme="a">
+    <%= form_for(@book) do |f| %>
+        <% if defined?(@ret_value) %>
+            <%= tag("div", {'data-role' => 'content', 'data-theme' => 'b'}, true) %>
+            <%= tag("p", {'align' => 'center'}, true) %>
+            <% if @ret_value == 0 %>
+                <%= "Book Successfully Uploaded!#{pars}" %>
+            <% else %>
+                <%= "Could not Upload the Book: #{@book.errors.messages}" %>
+            <% end %>
+            <%= tag("p") %>
+            <%= tag("div") %>
+        <% end %>
+            
+        <%= f.text_field :language, :value => 'Language' %>
+        <%= f.text_field :theme, :value => 'Theme' %>
+        <%= f.text_field :author, :value => 'Author' %>
+        <%= f.submit %>
+    <% end %>
+    <div data-role="navbar" data-theme="b" align="center">
+        <%= link_to 'Home', root_path %>
+    </div>
+</div>

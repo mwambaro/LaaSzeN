@@ -1,0 +1,13 @@
+
+<div data-role="content" data-theme="b">
+    <div data-role="fieldcontainer" data-theme="a">
+        <%= form_for(
+                @philosophy, url: {action: 'save'}, 
+                html: {multipart: true}
+            ) do |f| 
+        %>
+            <%= f.file_field "philo_up" %>
+            <%= f.submit "Upload" %>
+        <% end %>
+    </div>
+</div>
