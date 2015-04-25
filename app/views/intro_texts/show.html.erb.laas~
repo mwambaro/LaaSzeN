@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @intro_text.language %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @intro_text.content %>
+</p>
+
+<%= link_to 'Edit', edit_intro_text_path(@intro_text) %> |
+<%= link_to 'Back', intro_texts_path %>

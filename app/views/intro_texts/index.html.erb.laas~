@@ -1,15 +1,3 @@
-
-            
-<!-- CONTENT -->
-
-            <div id="content" class="page_wrapper page_background">
-                <div id="blog_content" class="columns_431">
-                    <div class="three_quarters bottom_padding">
-                        <div id="post-273" class="post_box top">
-                            
-
-<!-- David Egan Layout Compatible -->
-
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Intro Texts</h1>
@@ -39,13 +27,3 @@
 <br>
 
 <%= link_to 'New Intro text', new_intro_text_path %>
-
-                        </div>
-                    </div>
-                    
-<!-- QUATER SIDE BAR -->
-
-                    <div class="quarter sidebar">
-                    </div>
-                </div>
-            </div>

@@ -5,27 +5,27 @@ class IntroTextsController < ApplicationController
   # GET /intro_texts.json
   def index
     @intro_texts = IntroText.all
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /intro_texts/1
   # GET /intro_texts/1.json
   def show
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /intro_texts/new
   def new
     @intro_text = IntroText.new
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /intro_texts/1/edit
   def edit
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 

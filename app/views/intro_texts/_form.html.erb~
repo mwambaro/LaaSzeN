@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :content %><br>
-    <%= f.file_field :upload_intro_text %>
+    <%= f.text_field :content %>
   </div>
   <div class="actions">
     <%= f.submit %>
