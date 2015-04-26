@@ -5,27 +5,27 @@ class MottosController < ApplicationController
   # GET /mottos.json
   def index
     @mottos = Motto.all
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /mottos/1
   # GET /mottos/1.json
   def show
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /mottos/new
   def new
     @motto = Motto.new
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /mottos/1/edit
   def edit
-    @view_path = get_view_path
+    @view_path = get_view_path(params)
     DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 

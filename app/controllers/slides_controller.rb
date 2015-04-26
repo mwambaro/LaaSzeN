@@ -5,20 +5,28 @@ class SlidesController < ApplicationController
   # GET /slides.json
   def index
     @slides = Slide.all
+    @view_path = get_view_path(params)
+    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /slides/1
   # GET /slides/1.json
   def show
+    @view_path = get_view_path(params)
+    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /slides/new
   def new
     @slide = Slide.new
+    @view_path = get_view_path(params)
+    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /slides/1/edit
   def edit
+    @view_path = get_view_path(params)
+    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # POST /slides
@@ -69,6 +77,11 @@ class SlidesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def slide_params
-      params.require(:slide).permit(:language, :author, :theme, :topic, :content)
+      params.require(:slide).permit(:language, :author, :theme, :topic, :upload_slide)
+    end
+    
+    def get_view_path(params)
+        return nil if params.nil?
+        DavidEgan.new.get_view_path(params)
     end
 end

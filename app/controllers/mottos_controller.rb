@@ -5,20 +5,28 @@ class MottosController < ApplicationController
   # GET /mottos.json
   def index
     @mottos = Motto.all
+    @view_path = get_view_path(params)
+    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /mottos/1
   # GET /mottos/1.json
   def show
+    @view_path = get_view_path(params)
+    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /mottos/new
   def new
     @motto = Motto.new
+    @view_path = get_view_path(params)
+    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # GET /mottos/1/edit
   def edit
+    @view_path = get_view_path(params)
+    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # POST /mottos
@@ -69,6 +77,11 @@ class MottosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def motto_params
-      params.require(:motto).permit(:language, :name, :content)
+      params.require(:motto).permit(:language, :name, :upload_motto)
+    end
+    
+    def get_view_path(params)
+        return nil if params.nil?
+        DavidEgan.new.get_view_path(params)
     end
 end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @motto.language %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @motto.name %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @motto.content %>
+</p>
+
+<%= link_to 'Edit', edit_motto_path(@motto) %> |
+<%= link_to 'Back', mottos_path %>

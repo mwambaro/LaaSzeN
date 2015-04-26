@@ -25,8 +25,6 @@ class SlidesController < ApplicationController
 
   # GET /slides/1/edit
   def edit
-    @view_path = get_view_path(params)
-    DavidEgan.new.make_dav_layout_compatible(@view_path)
   end
 
   # POST /slides
@@ -74,14 +72,14 @@ class SlidesController < ApplicationController
     def set_slide
       @slide = Slide.find(params[:id])
     end
-    
-    def get_view_path(params)(params)
-        return nil if params.nil?
-        DavidEgan.new.get_view_path(params)
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def slide_params
       params.require(:slide).permit(:language, :author, :theme, :topic, :upload_slide)
+    end
+    
+    def get_view_path(params)
+        return nil if params.nil?
+        DavidEgan.new.get_view_path(params)
     end
 end
