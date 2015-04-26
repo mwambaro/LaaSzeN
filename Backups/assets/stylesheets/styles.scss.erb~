@@ -1,0 +1,5 @@
+
+#logo {
+     background-color: #006400;
+     background-image: url('<%= asset_path 'logo3.mobile.jpg' %>');
+ }

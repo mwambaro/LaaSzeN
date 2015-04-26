@@ -10,7 +10,7 @@ function init_rotator()
     }
     
     // Rotate speed.
-    var speed = 2000;
+    var speed = 10000;
     // Pause setting.
     var pause = false;
     

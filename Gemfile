@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby '2.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -55,6 +55,6 @@ group :development, :test do
   gem 'annotate', '~> 2.6.5'
 end
 
-gem 'rails_12factor', group: :production
 gem 'activerecord-session_store'
+gem 'rails_12factor', group: :production
 
