@@ -3,15 +3,24 @@ function responsive_david_egan_menu()
 {
 
 // Responsive Menu
-	
 	// prepend menu icon 
 			$('#nav_wrap').prepend('<div id="menu_icon">Menu</div>');
+			$("#menu_icon").hover(
+			    function(){
+			        $(this).css('text-decoration', 'underline');
+			    },
+			    function(){
+			        $(this).css('text-decoration', 'none');
+			    }
+			);
 	
 	// toggle nav
-			$("#menu_icon").on("click", function(){
-			$('#menu-main-menu').fadeToggle(700);
-	
-			});
+			$("#menu_icon").on(
+			    "click", 
+			    function(){
+			        $('#menu-main-menu').stop().fadeToggle(700);
+			    }
+			);
 
 // Back to Top Navigation
 	
