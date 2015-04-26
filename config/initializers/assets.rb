@@ -9,4 +9,4 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( jquery-1.11.1.min.js lib_drop_down.js lib_home.js lib_david_egan.js laaszen.js )
+Rails.application.config.assets.precompile += %w( jquery-1.11.1.min.js lib_drop_down.js lib_home.js laaszen.js )

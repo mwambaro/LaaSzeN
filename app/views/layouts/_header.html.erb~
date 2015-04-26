@@ -17,10 +17,13 @@
         <% @nav_bar << "\<%= link_to 'Home', root_path %\>" %>
     <% end %>
     
+    <% @languages = LaaszenModel::SiteLanguage.get_supported_languages(true) %>
+    <% @active_lang = LaaszenModel::SiteLanguage.get_active_language %>
     <% @nav_bar << "\<%= link_to 'Philosophy', '#' %\>" %>
     <% @nav_bar << "\<%= link_to 'LaaS', '#' %\>" %>
     <% @nav_bar << "\<%= link_to 'YearBooks', '#' %\>" %>
     <% @nav_bar << "\<%= link_to 'Sign In', '#' %\>" %>
+    <% @nav_bar << "\<%= link_to \"Lang is #{@active_lang}\", '#', id: 'site_lang', 'data-language' => \"#{@languages}\" %\>" %>
     
     <% @file = File.join(
         ::Rails.root, 'app', 'views', 'layouts', '_dav_header.html.erb'
@@ -33,18 +36,4 @@
             {bl_header: true, bl_content: false, bl_footer: false}                  
     ) %>
     <%= render 'layouts/dav_header' %>
-    
-    <!-- OLD -- 
-    <%= tag("br") %>
-    <%= render 'layouts/site_language' %>
-    <%= tag("br") %>
-    <%= render 'layouts/controls_form' %> 
-    <%= tag("br") %>
-    
-    <% uri = params[:controller]+'#'+params[:action] %>
-    
-    <% if !(uri =~ /^books#/i) %> 
-            <%= render 'layouts/header_navigation' %> 
-            <%= tag("br") %>  
-    <% end %>
-    <!-- -->
+ 

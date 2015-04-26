@@ -1035,6 +1035,11 @@ ul#menu-social-menu li {margin-right: 0; margin-left: 10px;; }
 	float: right;
 	display: none; /* hide menu icon initially */
 }
+
+#language_menu {
+	float: right;
+	display: none; /* hide menu initially */
+}
 /*===================================================================
 *Utility Styles
 *===================================================================*/

@@ -100,9 +100,7 @@ module LaaszenModel
             end
             
             if bl_raw
-                lgs = ""
-                langs.sort.each{|l| lgs += "#{l}#"}
-                langs = lgs.slice(0...lgs.length-1)
+            
             else
                 langs.sort!
             end

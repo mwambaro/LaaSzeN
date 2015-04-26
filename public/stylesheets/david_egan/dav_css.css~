@@ -1035,6 +1035,11 @@ ul#menu-social-menu li {margin-right: 0; margin-left: 10px;; }
 	float: right;
 	display: none; /* hide menu icon initially */
 }
+
+#language_menu {
+	float: right;
+	display: none; /* hide menu icon initially */
+}
 /*===================================================================
 *Utility Styles
 *===================================================================*/
@@ -1426,9 +1431,11 @@ input[type="email"] {
     -webkit-border-top-left-radius: 25px 25px;
        -moz-border-top-left-radius: 25px 25px;
             border-top-left-radius: 25px 25px;
+            /******
     -webkit-box-shadow: #999 12px -12px 2px 0, -12px 12px 2px;
        -moz-box-shadow: #999 12px -12px 2px 0, -12px 12px 2px;
             box-shadow: #999 12px -12px 2px 0, -12px 12px 2px;
+            /**********/
 }
 
 i:hover {
