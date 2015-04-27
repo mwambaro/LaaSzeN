@@ -8,7 +8,8 @@ function change_language()
     langs = langs.split('#');
     
     for(i=0; i<langs.length; i++){
-        lg += '<li class="language_item"><a href="#">' + langs[i] + '</li></a>';
+        lg += '<li class="language_item"><a href="/active_language/' + 
+              langs[i] + '">' + langs[i] + '</li></a>';
     }
     
     lg += '</ul>';

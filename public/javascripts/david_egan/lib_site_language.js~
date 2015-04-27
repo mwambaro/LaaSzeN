@@ -19,7 +19,7 @@ function change_language()
             $('#language_menu').fadeToggle(700);
         },
         function(){
-            $('#menu-main-menu').mouseOut(
+            $('#menu-main-menu').mouseout(
                 function(){$('#language_menu').stop().fadeToggle(700);}
             );
         }

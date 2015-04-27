@@ -26,8 +26,6 @@ Rails.application.routes.draw do
   get 'laaszen_task/edit'
   post 'laaszen_task/edit_translation'
   
-  post 'active_language/active'
-  
   get 'books/book_shelf'
   get 'books/book_whole'
   get 'books/book_collapse'
@@ -48,6 +46,7 @@ Rails.application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get 'active_language/:id' => 'active_language#active'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
