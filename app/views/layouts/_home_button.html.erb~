@@ -1,6 +1,0 @@
-
-<%= link_to(
-                sentence("Home"), root_path, 'data-role' => 'button', 
-                'data-inline' => 'true', 'data-theme' => 'b'
-            ) 
-        %>

@@ -1,4 +1,4 @@
-class CreateMottos < ActiveRecord::Migration
+class CreateMottos < ActiveRecord::Migration[6.1]
   def change
     create_table :mottos do |t|
       t.string :language

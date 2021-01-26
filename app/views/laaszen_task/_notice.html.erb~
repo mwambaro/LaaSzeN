@@ -1,5 +1,0 @@
-
-    <% @style = "color: green" if @notice =~ /success/i %>
-    <% @style = "color: red" if @notice =~ /fail/i %>
-    <% @text_content = "#{@notice}" %>
-    <%= render 'line_breaks' %>

@@ -1,6 +1,0 @@
-
-    <% @notice = 'Translation successfully completed. Many thanks!' %>
-    <%= render 'notice' %>
-    <div align="center">
-        <%= link_to 'Edit Translation', root_path %>
-    </div>

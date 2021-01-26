@@ -4,15 +4,9 @@
     <%= render 'layouts/stylesheets' %>
     <%= render 'layouts/jscripts' %>
 </head>
-    <body class="wide template-single">
-        <div id="wrapper">            
-            <%= render 'layouts/header' %> 
-            
-            <div id="body_data">       
-                <%= yield %>
-            </div>
-            
-            <%= render 'layouts/footer' %>
+    <body class="laaszen">
+        <div class="container">   
+            <%= yield %>
         </div>
     </body>
 </html>
