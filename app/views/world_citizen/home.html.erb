@@ -1,31 +1,35 @@
 
-<%= react_component('HelloWorld', {greeting: 'Hello from react-rails'}) %>
-<div id="title-bar">
-    <div class="site-logo">
-        <h1> Laastras </h1>
+<div id="title-bar" class="row">
+    <div class="col-4">
+        <%= react_component('SiteLogo', {logo_text: @logo_text}) %>
     </div>
-    <div class="site-title-text">
-        <%= @site_title_text %>
+    <div class="col-7">
+        <h1><%= @site_title_text %></h1>
     </div>
-    <div class="site-language">
+    <div class="col-1">
         <div class="language-logo">
-            <h3> LANGUAGE LOGO </h3>
+            <h3> Lang </h3>
         </div>
     </div>
 </div>
-<div id="mission-section-card">
-    <div class="mission-section-card-title">
-        <h2> <%= @mission_section_card_title %> </h2>
-    </div>
-    <div class="mission-section-card-body">
+<div id="mission-section-title" class="row">
+    <h2> <%= @mission_section_title %> </h2>
+</div>
+<div id="mission-section-body" class="row">
+    <div class="mission-section-card">
     </div>
 </div>
-<div id="social-impact-section">
+<div id="social-impact-section-title" class="row">
+    <h2> <%= @social_impact_section_title %> </h2>
 </div>
-<div id="publication-section-card">
-    <div class="publication-section-card-title">
-        <h2> <%= @publication_section_card_title %> </h2>
+<div id="social-impact-section-body" class="row">
+    <div class="social-impact-section-card">
     </div>
-    <div class="publication-section-card-body">
+</div>
+<div id="publication-section-title" class="row">
+    <h2> <%= @publication_section_title %> </h2>
+</div>
+<div id="publication-section-body" class="row">
+    <div class="publication-section-card">
     </div>
 </div>
