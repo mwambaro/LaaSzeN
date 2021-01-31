@@ -50,7 +50,8 @@ class SiteLogo extends React.Component {
                 let style = `
                     width: ${width}px;
                     height: ${height}px;
-                    display: inline-block;
+                    display: flex;
+                    justify-content: center;
                     position: relative;
                     border: 1px solid #aaa;
                     border-radius: ${border_radius}px;
