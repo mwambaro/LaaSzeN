@@ -1,36 +1,6 @@
 Rails.application.routes.draw do
-  resources :intro_texts
-
-  resources :mottos
-
-  resources :announcements
 
   resources :books
-
-  resources :slides
-  
-  get 'world_citizen/prev_slide'
-  get 'world_citizen/prev_ann'
-  get 'world_citizen/prev_motto'
-  
-  get 'world_citizen/next_slide'
-  get 'world_citizen/next_ann'
-  get 'world_citizen/next_motto'
-  
-  get 'active_language/active'
-
-  get 'laaszen_task/start'
-  get 'laaszen_task/restart'
-  post 'laaszen_task/translate'
-  
-  get 'laaszen_task/edit'
-  post 'laaszen_task/edit_translation'
-  
-  post 'active_language/active'
-  
-  get 'books/book_shelf'
-  get 'books/book_whole'
-  get 'books/book_collapse'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -42,9 +12,6 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get '/' => 'world_citizen#home'
-  get '/shelf' => 'books#book_shelf'
-  get '/bookw' => 'books#book_whole'
-  get '/bookp' => 'books#book_collapse'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
