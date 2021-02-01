@@ -2,8 +2,10 @@ class WorldCitizenController < ApplicationController
   before_action only: [:home]
   
   def home
+    @language = "English"
     @logo_text = "Laastras"
-    @site_title_text = "Leadership as a Service Trade System"
+    @site_capture_title = "Leadership as a Service Trade System"
+    @site_capture_text = "Equal opportunities, equal worth, employer, and employee, every human individual has equal right to every resource that sustains and support human existence"
     @mission_section_title = "Mission"
     @social_impact_section_title = "Social Impact"
     @publication_section_title = "Publications"

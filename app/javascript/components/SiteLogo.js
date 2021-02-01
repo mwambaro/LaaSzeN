@@ -3,35 +3,26 @@ import PropTypes from "prop-types"
 
 class SiteLogo extends React.Component {
     render(){      
+        let style = {
+        };
+
         return(
             <div id="site-logo">
-                <h1 id="site-logo-text"> {this.props.logo_text}  </h1>      
+                <span id="site-logo-text" style={style}> {this.props.logo_text}  </span>   
             </div>
         );
     }
 
     componentDidMount(){
-        this.hideRulerElement();
         this.applyStyleToLogo();
     }
     
-    hideRulerElement(){
-        let ruler = document.getElementById('ruler');
-        if(ruler){
-            let style = `
-                visibility: hidden;
-                white-space: nowrap
-            `;
-            ruler.setAttribute('style', style);
-        }
-    }
 
     visualLength(text){
         let width = 0;
-        let ruler = document.getElementById('ruler');
+        let ruler = document.getElementById('site-logo');
         if(ruler){
-            ruler.innerHTML = text;
-            width = ruler.offsetWidth;
+            let css = window.getComputedStyle(ruler);
         }
 
         return width;
@@ -50,6 +41,7 @@ class SiteLogo extends React.Component {
                 let style = `
                     width: ${width}px;
                     height: ${height}px;
+                    color: white;
                     display: flex;
                     justify-content: center;
                     position: relative;
@@ -57,7 +49,7 @@ class SiteLogo extends React.Component {
                     border-radius: ${border_radius}px;
                     -webkit-border-radius: ${border_radius}px;
                     -moz-border-radius: ${border_radius}px;
-                    background: #f8f8f8;
+                    background: #0e9ff1;
                     text-align: center
                 `;
                 console.log(`Style Logo: ${style}`);

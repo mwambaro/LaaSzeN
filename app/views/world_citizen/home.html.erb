@@ -1,15 +1,25 @@
 
 <div id="title-bar" class="row">
-    <div class="col-4">
+    <div class="col-3" style="font-size: 32px; font-weight: bold">
         <%= react_component('SiteLogo', {logo_text: @logo_text}) %>
     </div>
-    <div class="col-7">
-        <h1><%= @site_title_text %></h1>
-    </div>
-    <div class="col-1">
-        <div class="language-logo">
-            <h3> Lang </h3>
+    <div class="col-8" style="background: #515dae; 
+                              border-radius: 10px; 
+                              color: white; 
+                              display: flex; 
+                              justify-content: center"
+    >
+        <div style="position: absolute; top: 50%; transform: translate(0, -50%)">
+            <h1 style="text-align: center">
+                <%= @site_capture_title %>
+            </h1>
+            <p style="border: 2px; text-align: center; font-size: 14px">
+                <%= @site_capture_text %>
+            </p>
         </div>
+    </div>
+    <div class="col-1" style="font-size: 12px; font-weight: bold">
+        <%= react_component('SiteLogo', {logo_text: @language}) %>
     </div>
 </div>
 <div id="mission-section-title" class="row">
