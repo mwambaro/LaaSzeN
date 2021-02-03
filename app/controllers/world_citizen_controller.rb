@@ -11,6 +11,9 @@ class WorldCitizenController < ApplicationController
     @publication_section_title = "Publications"
   end
 
+  def language
+  end
+
   def social_impact_cards
     @social_impact = [
         { title: "Government Institution",

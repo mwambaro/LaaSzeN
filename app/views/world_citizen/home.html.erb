@@ -1,12 +1,15 @@
 
 <div id="title-bar" class="row">
     <div class="col-3" style="font-size: 32px; font-weight: bold">
-        <%= react_component('SiteLogo', {logo_text: @logo_text}) %>
+        <%= react_component('SiteLogo', {
+            logo_text: @logo_text, 
+            logo_id: 'site-logo', 
+            logo_text_id: 'site-logo-text',
+            logo_background: '#0e9ff1',
+            logo_click_url: url_for(controller: 'world_citizen', action: 'home')
+        }) %>
     </div>
-    <div class="col-8" style="background: #515dae; 
-                              border-radius: 10px; 
-                              color: white; 
-                              display: flex; 
+    <div class="col-8" style="display: flex; 
                               justify-content: center"
     >
         <div style="position: absolute; top: 50%; transform: translate(0, -50%)">
@@ -19,7 +22,13 @@
         </div>
     </div>
     <div class="col-1" style="font-size: 12px; font-weight: bold">
-        <%= react_component('SiteLogo', {logo_text: @language}) %>
+        <%= react_component('SiteLogo', {
+            logo_text: @language, 
+            logo_id: 'site-language-logo', 
+            logo_text_id: 'site-language-logo-text',
+            logo_background: '#bec2e1',
+            logo_click_url: url_for(controller: 'world_citizen', action: 'home')
+        }) %>
     </div>
 </div>
 <div id="mission-section-title" class="row">

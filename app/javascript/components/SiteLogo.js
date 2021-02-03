@@ -2,13 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 
 class SiteLogo extends React.Component {
-    render(){      
-        let style = {
-        };
-
+    render(){
         return(
-            <div id="site-logo">
-                <span id="site-logo-text" style={style}> {this.props.logo_text}  </span>   
+            <div id={this.props.logo_id} 
+                 onClick={this.onClick.bind(this)}
+                 onMouseOver={this.onMouseOver.bind(this)}
+            >
+                <span id={this.props.logo_text_id}> {this.props.logo_text}  </span>   
             </div>
         );
     }
@@ -17,10 +17,39 @@ class SiteLogo extends React.Component {
         this.applyStyleToLogo();
     }
     
+    onClick(e){
+        if(typeof(this) === 'undefined'){
+            console.log("onClick: 'this' object is undefined");
+            return;
+        }
+        e.preventDefault();
+        
+        let url = this.props.logo_click_url;
+        if(url){
+            if(url !== ''){
+                window.location = url;
+            }
+        }
+    }
+    
+    /// <brief>
+    /// Change cursor to pointer
+    /// </brief>
+    onMouseOver(e){
+        if(typeof(this) === 'undefined'){
+            console.log("onMouseOver: 'this' object is undefined");
+            return;
+        }
+        e.preventDefault();
+        let logo = document.getElementById(this.props.logo_id);
+        if(logo){
+            logo.style.cursor = "pointer";
+        }
+    }
 
     visualLength(text){
         let width = 0;
-        let ruler = document.getElementById('site-logo');
+        let ruler = document.getElementById(this.props.logo_id);
         if(ruler){
             let css = window.getComputedStyle(ruler);
         }
@@ -29,14 +58,15 @@ class SiteLogo extends React.Component {
     }
 
     applyStyleToLogo(){
-        let logo_text = document.getElementById('site-logo-text');
+        let logo_text = document.getElementById(this.props.logo_text_id);
         if(logo_text){
             let visual_width = this.visualLength(logo_text.innerText);
-            let logo = document.getElementById('site-logo');
+            let logo = document.getElementById(this.props.logo_id);
             if(logo){
                 let width = visual_width ? visual_width + 2 : logo_text.offsetWidth + 2;
                 let height = width;
                 let border_radius = width/2;
+                let logo_background = this.props.logo_background;
                 
                 let style = `
                     width: ${width}px;
@@ -49,7 +79,7 @@ class SiteLogo extends React.Component {
                     border-radius: ${border_radius}px;
                     -webkit-border-radius: ${border_radius}px;
                     -moz-border-radius: ${border_radius}px;
-                    background: #0e9ff1;
+                    background: ${logo_background};
                     text-align: center
                 `;
                 console.log(`Style Logo: ${style}`);
