@@ -1,2 +1,2 @@
 # LaaSzeN
-Application Of Leadership As A service(LaaS) philosophies
+Application Of Leadership As A service(LaaS) policy.
